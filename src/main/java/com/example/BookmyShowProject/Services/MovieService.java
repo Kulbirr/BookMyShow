@@ -13,7 +13,7 @@ public class MovieService {
     private MovieRepository movieRepository;
 
     public String addMovie(AddMovieRequest addMovieRequest) throws Exception{
-        Movie movie = AddMovieTransformer.converAddMovieRequestToEntity(addMovieRequest);
+        Movie movie = AddMovieTransformer.convertAddMovieRequestToEntity(addMovieRequest);
 
         movieRepository.save(movie);
 

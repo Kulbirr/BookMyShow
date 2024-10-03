@@ -85,5 +85,6 @@ public class ShowService {
             showSeatsList.add(showSeatsObj);
         }
         show.setShowSeatsList(showSeatsList);
+        return "Seats have been enabled for the show with showId "+show.getShowId();
     }
 }
