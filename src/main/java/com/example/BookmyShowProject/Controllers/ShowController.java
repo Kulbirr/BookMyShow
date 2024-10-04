@@ -35,4 +35,21 @@ public class ShowController {
         }
     }
 
+    @GetMapping("getAllShows")
+    public ResponseEntity getAllShows(){
+        return new ResponseEntity(showService.getAllShows(), HttpStatus.OK);
+    }
+
+    @GetMapping("getShow/{showId}")
+    public ResponseEntity getShow(@PathVariable int showId){
+        try{
+            String result = showService.getShow(showId);
+            return new ResponseEntity(result, HttpStatus.OK);
+        }catch (ShowNotFoundException e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+
 }

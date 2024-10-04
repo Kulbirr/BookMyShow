@@ -49,7 +49,7 @@ public class ShowService {
         theater.getShowList().add(show);
         movie.getShowList().add(show);
 
-        showRepository.save(show);
+         showRepository.save(show);
 
         return "show has been saved to the DB with the given show id "+show.getShowId();
     }
@@ -86,5 +86,20 @@ public class ShowService {
         }
         show.setShowSeatsList(showSeatsList);
         return "Seats have been enabled for the show with showId "+show.getShowId();
+    }
+
+    public List<Show> getAllShows(){
+        return showRepository.findAll();
+    }
+
+    public String getShow(int showId) throws ShowNotFoundException {
+        Optional<Show> optionalShow = showRepository.findById(showId);
+
+        if(!optionalShow.isPresent()){
+            throw new ShowNotFoundException("No show exists with given showId");
+        }
+
+        Show show = optionalShow.get();
+        return "Show with showId "+showId+" is "+show;
     }
 }
