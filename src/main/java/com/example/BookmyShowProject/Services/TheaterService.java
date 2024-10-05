@@ -26,7 +26,7 @@ public class TheaterService {
         return "Theater and its seats have been saved to DB.";
     }
 
-    public void createTheaterSeats(Theater theater, AddTheaterRequest addTheaterRequest){
+    public String createTheaterSeats(Theater theater, AddTheaterRequest addTheaterRequest){
         int noOfClassicSeats = addTheaterRequest.getNoOfClassicSeats();
         int noOfPremiumSeats = addTheaterRequest.getNoOfPremiumSeats();
         int seatsPerRow = addTheaterRequest.getNoOfSeatsPerRow();
@@ -71,5 +71,6 @@ public class TheaterService {
         }
         theater.setTheaterSeatList(theaterSeatList);
         theaterRepository.save(theater);
+        return "Theater Seats have been saved to DB.";
     }
 }

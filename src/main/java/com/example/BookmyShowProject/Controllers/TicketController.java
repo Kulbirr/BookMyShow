@@ -1,11 +1,11 @@
 package com.example.BookmyShowProject.Controllers;
 
+import com.example.BookmyShowProject.Entity.Show;
 import com.example.BookmyShowProject.RequestDTOS.BookTicketRequest;
+import com.example.BookmyShowProject.ResponseDto.TicketResponse;
 import com.example.BookmyShowProject.Services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TicketController {
@@ -16,5 +16,15 @@ public class TicketController {
     private String bookTicket(@RequestBody BookTicketRequest bookTicketRequest){
         String result = ticketService.bookTicket(bookTicketRequest);
         return result;
+    }
+
+    @GetMapping("findRightShow")
+    public Show findRightShow(@RequestParam("bookTicketRequest") BookTicketRequest bookTicketRequest){
+        return ticketService.findRightShow(bookTicketRequest);
+    }
+
+    @GetMapping("generateTicket")
+    public TicketResponse generateTicket(@RequestParam("ticketId") Integer ticketId){
+        return ticketService.generateTicket(ticketId);
     }
 }

@@ -27,6 +27,10 @@ public class Ticket {
 
     private LocalTime showTime;
 
+    private String theaterName;
+
+    private Integer totalAmount;
+
     private String theaterAddress;
     @ManyToOne
     @JoinColumn
@@ -35,6 +39,7 @@ public class Ticket {
     @ManyToOne
     @JoinColumn
     private User user;
+
 
 
 }
